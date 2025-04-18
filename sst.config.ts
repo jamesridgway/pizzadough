@@ -11,6 +11,13 @@ export default $config({
     };
   },
   async run() {
-    new sst.aws.Nextjs("MyWeb");
+    new sst.aws.Nextjs("PizzaDough",
+      {
+        domain: {
+          name: 'pizzadough.jamesridgway.co.uk',
+          dns: sst.cloudflare.dns()
+        }
+      }
+    );
   },
 });
