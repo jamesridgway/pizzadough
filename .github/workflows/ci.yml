@@ -34,6 +34,5 @@ jobs:
           aws-region: eu-west-2
 
       - name: Deploy
-        env:
         run: |
           ./node_modules/.bin/sst deploy --stage "production"
