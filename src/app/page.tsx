@@ -24,15 +24,16 @@ function Home() {
   const [yeastType, setYeastType] = useState<Yeast>(searchParams.get('yeast') as Yeast ?? 'ADY');
   const [instructions, setInstructions] = useState<ReceiptInstructions | undefined>(undefined);
   const [yeast, setYeast] = useState<YeastEntry | undefined>(undefined);
+  const [fermentationHours, setFermentationHours] = useState<number>(24);
 
   useEffect(() => {
     const rg = new RecipeGenerator();
     setInstructions(rg.generate({
-      balls, hydration, yeast: yeastType, temperature: temp
+      balls, hydration, yeast: yeastType, temperature: temp, fermentationHours
     }));
     setYeast(getFermentationHours(temp));
   },
-  [balls, temp, hydration, yeastType]);
+  [balls, temp, hydration, yeastType, fermentationHours]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
@@ -120,25 +121,45 @@ function Home() {
 
               {yeast && (
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Recommended Fermentation Times</h3>
-                  <div className="space-y-2">
-                    {yeast.fermentation_hours
-                      .sort((a, b) => b.hours - a.hours)
-                      .map((x, index) => {
-                        const yeastPercentage = yeastType === 'ADY' ? x.ady * 100 : 
-                                               yeastType === 'IDY' ? x.idy * 100 : 
-                                               x.cy * 100;
-                        return (
-                          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                            <span className="text-sm font-medium text-gray-700">
-                              {x.hours} hours
-                            </span>
-                            <span className="text-xs text-gray-500">
-                              {yeastPercentage.toFixed(2)}% yeast
-                            </span>
-                          </div>
-                        );
-                      })}
+                  <Slider
+                    value={[fermentationHours]}
+                    onValueChange={(value) => setFermentationHours(value[0])}
+                    min={Math.min(...yeast.fermentation_hours.map(x => x.hours))}
+                    max={Math.max(...yeast.fermentation_hours.map(x => x.hours))}
+                    step={1}
+                    label="Fermentation time"
+                    unit=" hours"
+                  />
+                  <p className="text-sm text-gray-500 mt-1">Time for dough fermentation</p>
+                  
+                  <div className="mt-4">
+                    <h3 className="text-lg font-medium text-gray-900 mb-3">Available Fermentation Times</h3>
+                    <div className="space-y-2">
+                      {yeast.fermentation_hours
+                        .sort((a, b) => b.hours - a.hours)
+                        .map((x, index) => {
+                          const yeastPercentage = yeastType === 'ADY' ? x.ady * 100 : 
+                                                 yeastType === 'IDY' ? x.idy * 100 : 
+                                                 x.cy * 100;
+                          const isSelected = x.hours === fermentationHours;
+                          return (
+                            <div key={index} className={`flex items-center justify-between p-3 rounded-lg ${
+                              isSelected ? 'bg-orange-100 border border-orange-300' : 'bg-gray-50'
+                            }`}>
+                              <span className={`text-sm font-medium ${
+                                isSelected ? 'text-orange-700' : 'text-gray-700'
+                              }`}>
+                                {x.hours} hours
+                              </span>
+                              <span className={`text-xs ${
+                                isSelected ? 'text-orange-600' : 'text-gray-500'
+                              }`}>
+                                {yeastPercentage.toFixed(2)}% yeast
+                              </span>
+                            </div>
+                          );
+                        })}
+                    </div>
                   </div>
                 </div>
               )}
