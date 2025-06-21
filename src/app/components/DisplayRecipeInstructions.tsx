@@ -1,11 +1,12 @@
-import { ReceiptInstructions } from "../recipe_generator";
-import { ChefHat, Scale, Clock, Wheat, Droplets, Sprout, CircleDot } from "lucide-react";
+import { ReceiptInstructions, Yeast } from "../recipe_generator";
+import { ChefHat, Scale, Clock, Wheat, Droplets, Sprout, CircleDot, AlertTriangle } from "lucide-react";
 import StepList from "./StepList";
 import IngredientCard from "./IngredientCard";
 
 type Props = {
   instructions: ReceiptInstructions | undefined;
   fermentationHours: number;
+  yeastType: Yeast;
 }
 
 export default function DisplayRecipeInstructions(props: Props) {
@@ -62,12 +63,15 @@ export default function DisplayRecipeInstructions(props: Props) {
             <h3 className="text-lg font-medium text-gray-900">Instructions</h3>
           </div>
           <p className="mb-4">This recipe is designed to be made by hand using a dough tray.</p>
+
           <StepList
             steps={[
               {
                 number: 1,
-                title: "Disolve yeast",
-                description: `Add ~75% of the water (${Math.round(props.instructions.water * 0.75)}ml) to your dough tray and mix in your yeast.`
+                title: "Yeast Preparation",
+                description: props.yeastType === 'ADY' 
+                  ? `Warm ~75% of the water (${Math.round(props.instructions.water * 0.75)}ml) to 40-46°C (105-115°F) and add it to your dough tray. Add your yeast and let it activate for 5-10 minutes until foamy.`
+                  : `Add ~75% of the water (${Math.round(props.instructions.water * 0.75)}ml) to your dough tray and mix in your yeast.`
               },
               {
                 number: 2,
