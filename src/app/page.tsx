@@ -9,7 +9,8 @@ import { YeastEntry } from "./data";
 import { FermentationTimesModal } from "./components/FermentationTimesModal";
 import { DoughRequirementsCard } from "./components/DoughRequirementsCard";
 import { FermentationCard } from "./components/FermentationCard";
-import { Pizza } from "lucide-react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function Home() {
   const searchParams = useSearchParams();
@@ -41,13 +42,7 @@ function Home() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <Pizza className="h-12 w-12 text-orange-600 mr-3" />
-            <h1 className="text-4xl font-bold text-gray-900">Pizza Dough Calculator</h1>
-          </div>
-          <p className="text-lg text-gray-600">Calculate the perfect pizza dough recipe with customizable parameters</p>
-        </div>
+        <Header currentPage="home" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Dough Requirements Card */}
@@ -89,6 +84,9 @@ function Home() {
             onFermentationHoursChange={setFermentationHours}
           />
         )}
+
+        {/* Footer */}
+        <Footer />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { ReceiptInstructions } from "../recipe_generator";
 import { ChefHat, Scale, Clock } from "lucide-react";
+import StepList from "./StepList";
 
 type Props = {
   instructions: ReceiptInstructions | undefined
@@ -50,15 +51,45 @@ export default function DisplayRecipeInstructions(props: Props) {
             <Clock className="h-5 w-5 text-orange-600 mr-2" />
             <h3 className="text-lg font-medium text-gray-900">Instructions</h3>
           </div>
-          <div className="space-y-3 text-sm text-gray-700">
-            <p>1. Mix flour and salt in a large bowl</p>
-            <p>2. Dissolve yeast in warm water</p>
-            <p>3. Gradually add water to flour mixture</p>
-            <p>4. Knead until smooth and elastic</p>
-            <p>5. Let rise according to fermentation times</p>
-            <p>6. Divide into equal portions</p>
-            <p>7. Shape into balls and let rest</p>
-          </div>
+          <StepList
+            steps={[
+              {
+                number: 1,
+                title: "Mix Dry Ingredients",
+                description: "Mix flour and salt in a large bowl"
+              },
+              {
+                number: 2,
+                title: "Prepare Yeast",
+                description: "Dissolve yeast in warm water"
+              },
+              {
+                number: 3,
+                title: "Combine Ingredients",
+                description: "Gradually add water to flour mixture"
+              },
+              {
+                number: 4,
+                title: "Knead Dough",
+                description: "Knead until smooth and elastic"
+              },
+              {
+                number: 5,
+                title: "First Rise",
+                description: "Let rise according to fermentation times"
+              },
+              {
+                number: 6,
+                title: "Divide Dough",
+                description: "Divide into equal portions"
+              },
+              {
+                number: 7,
+                title: "Shape and Rest",
+                description: "Shape into balls and let rest"
+              }
+            ]}
+          />
         </div>
       </div>
     </div>
