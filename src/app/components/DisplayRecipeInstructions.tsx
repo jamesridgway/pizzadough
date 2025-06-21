@@ -1,6 +1,7 @@
 import { ReceiptInstructions } from "../recipe_generator";
-import { ChefHat, Scale, Clock } from "lucide-react";
+import { ChefHat, Scale, Clock, Wheat, Droplets, Sprout, CircleDot } from "lucide-react";
 import StepList from "./StepList";
+import IngredientCard from "./IngredientCard";
 
 type Props = {
   instructions: ReceiptInstructions | undefined
@@ -26,22 +27,30 @@ export default function DisplayRecipeInstructions(props: Props) {
             <h3 className="text-lg font-medium text-gray-900">Ingredients</h3>
           </div>
           <div className="space-y-3">
-            <div className="flex justify-between items-center p-2 bg-white rounded border">
-              <span className="text-gray-700">Flour</span>
-              <span className="font-semibold text-gray-900">{props.instructions.flour}g</span>
-            </div>
-            <div className="flex justify-between items-center p-2 bg-white rounded border">
-              <span className="text-gray-700">Water</span>
-              <span className="font-semibold text-gray-900">{props.instructions.water}ml</span>
-            </div>
-            <div className="flex justify-between items-center p-2 bg-white rounded border">
-              <span className="text-gray-700">Yeast</span>
-              <span className="font-semibold text-gray-900">{props.instructions.yeast}g</span>
-            </div>
-            <div className="flex justify-between items-center p-2 bg-white rounded border">
-              <span className="text-gray-700">Salt</span>
-              <span className="font-semibold text-gray-900">{props.instructions.salt}g</span>
-            </div>
+            <IngredientCard
+              icon={Wheat}
+              iconColor="text-amber-600"
+              name="Flour"
+              value={`${props.instructions.flour}g`}
+            />
+            <IngredientCard
+              icon={Droplets}
+              iconColor="text-blue-600"
+              name="Water"
+              value={`${props.instructions.water}ml`}
+            />
+            <IngredientCard
+              icon={Sprout}
+              iconColor="text-green-600"
+              name="Yeast"
+              value={`${props.instructions.yeast}g`}
+            />
+            <IngredientCard
+              icon={CircleDot}
+              iconColor="text-gray-600"
+              name="Salt"
+              value={`${props.instructions.salt}g`}
+            />
           </div>
         </div>
 
