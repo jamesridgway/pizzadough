@@ -23,7 +23,7 @@ function Home() {
   const [balls, setBalls] = useState<number>(getDefaultNumberValue('balls', 6));
   const [temp, setTemp] = useState<number>(getDefaultNumberValue('temp', 16));
   const [hydration, setHydration] = useState<number>(getDefaultNumberValue('hydration', 62.5));
-  const [yeastType, setYeastType] = useState<Yeast>(searchParams.get('yeast') as Yeast ?? 'ADY');
+  const [yeastType, setYeastType] = useState<Yeast>(searchParams.get('yeast') as Yeast ?? 'IDY');
   const [instructions, setInstructions] = useState<ReceiptInstructions | undefined>(undefined);
   const [yeast, setYeast] = useState<YeastEntry | undefined>(undefined);
   const [fermentationHours, setFermentationHours] = useState<number>(24);
