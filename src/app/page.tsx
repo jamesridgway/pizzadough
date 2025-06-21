@@ -69,7 +69,7 @@ function Home() {
         {/* Recipe Instructions */}
         {instructions && (
           <div className="mt-8 bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-            <DisplayRecipeInstructions instructions={instructions} />
+            <DisplayRecipeInstructions instructions={instructions} fermentationHours={fermentationHours} />
           </div>
         )}
 

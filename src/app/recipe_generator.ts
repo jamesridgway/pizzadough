@@ -31,7 +31,7 @@ export class RecipeGenerator {
             flour: flourWeight,
             water: waterWeight,
             yeast: yeastAmount,
-            salt: parseFloat((totalDoughWeight * 0.00925).toFixed(1))
+            salt: parseFloat((totalDoughWeight * 0.0185).toFixed(1))
         }
     }
 

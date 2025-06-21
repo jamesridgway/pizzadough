@@ -4,7 +4,8 @@ import StepList from "./StepList";
 import IngredientCard from "./IngredientCard";
 
 type Props = {
-  instructions: ReceiptInstructions | undefined
+  instructions: ReceiptInstructions | undefined;
+  fermentationHours: number;
 }
 
 export default function DisplayRecipeInstructions(props: Props) {
@@ -60,45 +61,57 @@ export default function DisplayRecipeInstructions(props: Props) {
             <Clock className="h-5 w-5 text-orange-600 mr-2" />
             <h3 className="text-lg font-medium text-gray-900">Instructions</h3>
           </div>
+          <p className="mb-4">This recipe is designed to be made by hand using a dough tray.</p>
           <StepList
             steps={[
               {
                 number: 1,
-                title: "Mix Dry Ingredients",
-                description: "Mix flour and salt in a large bowl"
+                title: "Disolve yeast",
+                description: `Add ~75% of the water (${Math.round(props.instructions.water * 0.75)}ml) to your dough tray and mix in your yeast.`
               },
               {
                 number: 2,
-                title: "Prepare Yeast",
-                description: "Dissolve yeast in warm water"
+                title: "Add flour",
+                description: "Add all of the flour to your water and dough mixture."
               },
               {
                 number: 3,
-                title: "Combine Ingredients",
-                description: "Gradually add water to flour mixture"
+                title: "Combine ingredients",
+                description: "Mix the ingredients together, then add the salt before adding the remaining water."
               },
               {
                 number: 4,
-                title: "Knead Dough",
-                description: "Knead until smooth and elastic"
+                title: "Knead dough",
+                description: "Once the dough has come together, empty it onto a work surface and knead until the dough reaches a temperature of 23-24°C. Use an instant read thermometer to check the temperature."
               },
               {
                 number: 5,
-                title: "First Rise",
-                description: "Let rise according to fermentation times"
+                title: "Relax",
+                description: "Place the dough back in the dough tray with the lid on and allow the dough to relax for 10 minutes."
               },
               {
                 number: 6,
-                title: "Divide Dough",
-                description: "Divide into equal portions"
+                title: "Shape and rest",
+                description: "Shape the dough into one large ball and leave to rest for an hour in the dough tray with the lid on."
               },
               {
                 number: 7,
-                title: "Shape and Rest",
-                description: "Shape into balls and let rest"
+                title: "Form into balls",
+                description: "Shape the dough into 270 gram balls and place them back into the dough tray, evenly spaced with the lid on."
+              },
+              {
+                number: 8,
+                title: "Prove",
+                description: `Leave the dough to prove for ${props.fermentationHours} hours.`
               }
             ]}
           />
+          <p className="mt-4">
+            <small>
+            This recipe calculator is based on the <a href="https://www.youtube.com/watch?v=cM9elo7qtp8" target="_blank" 
+            className="text-orange-600 hover:text-orange-700 underline">Neapolitan Pizza recipe by Adam Atkins</a> which you can find on his <a href="https://www.youtube.com/@peddlingpizza" target="_blank" className="text-orange-600 hover:text-orange-700 underline">@peddlingpizza</a> YouTube channel.
+            </small>
+          </p>
         </div>
       </div>
     </div>
