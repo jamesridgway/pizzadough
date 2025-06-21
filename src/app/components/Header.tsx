@@ -13,20 +13,20 @@ export default function Header({ currentPage }: HeaderProps) {
         <nav className="flex space-x-6">
           <Link 
             href="/" 
-            className={`text-lg font-medium transition-colors ${
+            className={`text-sm font-medium transition-colors px-3 py-1 rounded-md ${
               currentPage === 'home' 
-                ? 'text-orange-600' 
-                : 'text-gray-600 hover:text-orange-600'
+                ? 'text-orange-500 border-1 border-orange-600' 
+                : 'text-orange-500 border-1 border-transparent hover:text-orange-600'
             }`}
           >
             Home
           </Link>
           <Link 
             href="/about" 
-            className={`text-lg font-medium transition-colors ${
+            className={`text-sm font-medium transition-colors px-3 py-1 rounded-md ${
               currentPage === 'about' 
-                ? 'text-orange-600' 
-                : 'text-gray-600 hover:text-orange-600'
+                ? 'text-orange-500 border-1 border-orange-600' 
+                : 'text-orange-500 border-1 border-transparent hover:text-orange-600'
             }`}
           >
             About
@@ -39,7 +39,7 @@ export default function Header({ currentPage }: HeaderProps) {
           <Pizza className="h-12 w-12 text-orange-600 mr-3" />
           <h1 className="text-4xl font-bold text-gray-900">Pizza Dough Calculator</h1>
         </div>
-        <p className="text-lg text-gray-600">Calculate the perfect pizza dough recipe with customizable parameters</p>
+        <p className="text-lg text-gray-600">Calculate the perfect pizza dough recipe with customisable parameters</p>
       </div>
     </div>
   );

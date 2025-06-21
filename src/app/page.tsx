@@ -40,7 +40,7 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-2 py-8 max-w-4xl">
         {/* Header */}
         <Header currentPage="home" />
 

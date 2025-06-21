@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Pizza Dough Calculator",
-  description: "Calculate the perfect pizza dough recipe with customizable parameters",
+  description: "Calculate the perfect pizza dough recipe with customisable parameters",
 };
 
 export default function RootLayout({

@@ -9,7 +9,7 @@ import StepList from "../components/StepList";
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-2 py-8 max-w-4xl">
         {/* Header */}
         <Header currentPage="about" />
 
@@ -92,7 +92,7 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Technical Details</h2>
             <div className="space-y-3 text-gray-700">
               <p>
-                <strong>Yeast Types Supported:</strong> Active Dry Yeast (ADY), Instant Yeast, Fresh Yeast, and Sourdough Starter
+                <strong>Yeast Types Supported:</strong> Active Dry Yeast (ADY), Instant Dry Yeast (IDY) and Compressed Yeast (CY).
               </p>
               <p>
                 <strong>Temperature Range:</strong> 10°C to 30°C (50°F to 86°F)
@@ -109,11 +109,34 @@ export default function AboutPage() {
           {/* About the Developer */}
           <section className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">About the Project</h2>
-            <p className="text-gray-700 leading-relaxed">
-              This pizza dough calculator was built with modern web technologies including Next.js, React, and TypeScript. 
+            <p className="text-gray-700 leading-relaxed mb-4">
               The calculations are based on established bread-making science and pizza dough formulas used by professional 
               pizzaiolos worldwide. Whether you're making your first pizza or perfecting your technique, this tool will 
               help you achieve consistent, delicious results every time.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-4">
+            This pizza dough calculator was built with modern web technologies including Next.js, React, and TypeScript. 
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              This tool was created by{" "}
+              <a 
+                href="https://www.jamesridgway.co.uk/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-orange-600 hover:text-orange-700 font-medium underline"
+              >
+                James Ridgway
+              </a>
+              , a software engineer passionate about quality-focused and maintainable software. You can find more of his work, 
+              projects, and experiments on his{" "}
+              <a 
+                href="https://www.jamesridgway.co.uk/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-orange-600 hover:text-orange-700 font-medium underline"
+              >
+                website
+              </a>.
             </p>
           </section>
         </div>

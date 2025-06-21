@@ -1,21 +1,10 @@
 # Pizza Dough Calculator
 
-A beautiful, interactive web application for calculating the perfect pizza dough recipe with customizable parameters. Built with Next.js, React, and Tailwind CSS.
+A beautiful, interactive web application for calculating the perfect pizza dough recipe with customisable parameters. Built with Next.js, React, and Tailwind CSS.
 
 ## Prerequisites
 
 This project requires Node.js version 24 or higher. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions.
-
-### Installing nvm (if not already installed)
-
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-```
-
-Then restart your terminal or run:
-```bash
-source ~/.bashrc
-```
 
 ## Getting Started
 
@@ -72,7 +61,7 @@ source ~/.bashrc
 ```
 src/
 ├── app/
-│   ├── components/     # Reusable UI components
+│   ├── components/    # Reusable UI components
 │   ├── lib/           # Utility functions
 │   ├── globals.css    # Global styles and Tailwind
 │   ├── layout.tsx     # Root layout
