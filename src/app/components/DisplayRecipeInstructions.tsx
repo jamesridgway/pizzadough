@@ -1,5 +1,5 @@
 import { ReceiptInstructions, Yeast } from "../recipe_generator";
-import { ChefHat, Scale, Clock, Wheat, Droplets, Sprout, CircleDot, AlertTriangle } from "lucide-react";
+import { ChefHat, Scale, Clock, Wheat, Droplets, Sprout, CircleDot } from "lucide-react";
 import StepList from "./StepList";
 import IngredientCard from "./IngredientCard";
 
@@ -21,9 +21,9 @@ export default function DisplayRecipeInstructions(props: Props) {
         <h2 className="text-2xl font-semibold text-gray-900">Recipe & Instructions</h2>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
         {/* Ingredients */}
-        <div className="bg-gray-50 rounded-lg p-4 md:col-span-1">
+        <div className="bg-gray-50 rounded-lg p-4 md:col-span-2">
           <div className="flex items-center mb-4">
             <Scale className="h-5 w-5 text-blue-600 mr-2" />
             <h3 className="text-lg font-medium text-gray-900">Ingredients</h3>
@@ -57,7 +57,7 @@ export default function DisplayRecipeInstructions(props: Props) {
         </div>
 
         {/* Instructions */}
-        <div className="bg-gray-50 rounded-lg p-4 md:col-span-3">
+        <div className="bg-gray-50 rounded-lg p-4 md:col-span-4">
           <div className="flex items-center mb-4">
             <Clock className="h-5 w-5 text-orange-600 mr-2" />
             <h3 className="text-lg font-medium text-gray-900">Instructions</h3>
@@ -70,7 +70,7 @@ export default function DisplayRecipeInstructions(props: Props) {
                 number: 1,
                 title: "Yeast Preparation",
                 description: props.yeastType === 'ADY' 
-                  ? `Warm ~75% of the water (${Math.round(props.instructions.water * 0.75)}ml) to 40-46°C (105-115°F) and add it to your dough tray. Add your yeast and let it activate for 5-10 minutes until foamy.`
+                  ? `Warm ~75% of the water (${Math.round(props.instructions.water * 0.75)}ml) to 40-46°C and add it to your dough tray. Add your yeast and let it activate for 5-10 minutes until foamy.`
                   : `Add ~75% of the water (${Math.round(props.instructions.water * 0.75)}ml) to your dough tray and mix in your yeast.`
               },
               {

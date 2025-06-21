@@ -98,13 +98,13 @@ export default function AboutPage() {
                 <strong>Yeast Types Supported:</strong> Active Dry Yeast (ADY), Instant Dry Yeast (IDY) and Compressed Yeast (CY).
               </p>
               <p>
-                <strong>Temperature Range:</strong> 10°C to 30°C (50°F to 86°F)
+                <strong>Temperature Range:</strong> 10°C to 30°C.
               </p>
               <p>
-                <strong>Hydration Range:</strong> 55% to 75% (water to flour ratio)
+                <strong>Hydration Range:</strong> 55% to 75% (water to flour ratio).
               </p>
               <p>
-                <strong>Fermentation Times:</strong> 4 to 72 hours depending on temperature and yeast type
+                <strong>Fermentation Times:</strong> 4 to 72 hours depending on temperature and yeast type.
               </p>
             </div>
           </section>
