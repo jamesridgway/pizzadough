@@ -1,3 +1,5 @@
+import { FERMENTATION_DATA, FermentationHour, YeastEntry } from './data';
+
 export type ReceiptInstructions = {
     flour: number;
     water: number;
@@ -34,18 +36,15 @@ export class RecipeGenerator {
     }
 
     private calculateYeastAmount(fermentationHours: number, yeastType: Yeast, temperature: number, balls: number): number {
-        // Import the fermentation data
-        const { FERMENTATION_DATA } = require('./data');
-        
         // Find the closest temperature entry
-        const tempEntry = FERMENTATION_DATA.reduce((closest: any, current: any) => {
+        const tempEntry = FERMENTATION_DATA.reduce((closest: YeastEntry, current: YeastEntry) => {
             const currentDiff = Math.abs(current.temperature - temperature);
             const closestDiff = Math.abs(closest.temperature - temperature);
             return currentDiff < closestDiff ? current : closest;
         });
         
         // Find the closest fermentation hours entry
-        const hourEntry = tempEntry.fermentation_hours.reduce((closest: any, current: any) => {
+        const hourEntry = tempEntry.fermentation_hours.reduce((closest: FermentationHour, current: FermentationHour) => {
             const currentDiff = Math.abs(current.hours - fermentationHours);
             const closestDiff = Math.abs(closest.hours - fermentationHours);
             return currentDiff < closestDiff ? current : closest;

@@ -1,7 +1,6 @@
 "use client";
 
-import { Pizza, Calculator, Clock, Thermometer, Droplets, Users } from "lucide-react";
-import Link from "next/link";
+import { Clock, Thermometer, Droplets, Users } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import StepList from "../components/StepList";
@@ -111,7 +110,7 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">About the Project</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               The calculations are based on established bread-making science and pizza dough formulas used by professional 
-              pizzaiolos worldwide. Whether you're making your first pizza or perfecting your technique, this tool will 
+              pizzaiolos worldwide. Whether yo&apos;re making your first pizza or perfecting your technique, this tool will 
               help you achieve consistent, delicious results every time.
             </p>
             <p className="text-gray-700 leading-relaxed mb-4">
