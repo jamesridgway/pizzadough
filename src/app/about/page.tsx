@@ -92,7 +92,7 @@ export default function AboutPage() {
             <div className="space-y-3 text-gray-700">
               <p>
                 This recipe calculator is based on the <a href="https://www.youtube.com/watch?v=cM9elo7qtp8" target="_blank" 
-                className="text-orange-600 hover:text-orange-700 font-medium underline">Neapolitan Pizza recipe by Adam Atkins</a> which you can find on his <a href="https://www.youtube.com/@peddlingpizza" target="_blank" className="text-orange-600 hover:text-orange-700 font-medium underline">@peddlingpizza</a> YouTube channel.
+                className="text-orange-600 hover:text-orange-700 font-medium underline">neapolitan pizza recipe by Adam Atkins</a> which you can find on his <a href="https://www.youtube.com/@peddlingpizza" target="_blank" className="text-orange-600 hover:text-orange-700 font-medium underline">@peddlingpizza</a> YouTube channel.
               </p>
               <p>
                 <strong>Yeast Types Supported:</strong> Active Dry Yeast (ADY), Instant Dry Yeast (IDY) and Compressed Yeast (CY).

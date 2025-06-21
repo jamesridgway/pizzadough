@@ -113,7 +113,7 @@ export default function DisplayRecipeInstructions(props: Props) {
           <p className="mt-4">
             <small>
             This recipe calculator is based on the <a href="https://www.youtube.com/watch?v=cM9elo7qtp8" target="_blank" 
-            className="text-orange-600 hover:text-orange-700 underline">Neapolitan Pizza recipe by Adam Atkins</a> which you can find on his <a href="https://www.youtube.com/@peddlingpizza" target="_blank" className="text-orange-600 hover:text-orange-700 underline">@peddlingpizza</a> YouTube channel.
+            className="text-orange-600 hover:text-orange-700 underline">neapolitan pizza recipe by Adam Atkins</a> which you can find on his <a href="https://www.youtube.com/@peddlingpizza" target="_blank" className="text-orange-600 hover:text-orange-700 underline">@peddlingpizza</a> YouTube channel.
             </small>
           </p>
         </div>
