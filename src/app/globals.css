@@ -73,3 +73,9 @@
 .ring-offset-background {
   background-color: #ffffff;
 }
+.bg-popover {
+  background-color: #FFFFFF;
+}
+.select-item:hover {
+  background-color: var(--color-orange-100);
+}

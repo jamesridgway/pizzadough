@@ -6,9 +6,10 @@ import { ReceiptInstructions, RecipeGenerator, Yeast } from "./recipe_generator"
 import DisplayRecipeInstructions from "./components/DisplayRecipeInstructions";
 import { getFermentationHours } from "./fermentation";
 import { YeastEntry } from "./data";
-import { Slider } from "./components/Slider";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/Select";
-import { Pizza, Clock } from "lucide-react";
+import { FermentationTimesModal } from "./components/FermentationTimesModal";
+import { DoughRequirementsCard } from "./components/DoughRequirementsCard";
+import { FermentationCard } from "./components/FermentationCard";
+import { Pizza } from "lucide-react";
 
 function Home() {
   const searchParams = useSearchParams();
@@ -25,6 +26,7 @@ function Home() {
   const [instructions, setInstructions] = useState<ReceiptInstructions | undefined>(undefined);
   const [yeast, setYeast] = useState<YeastEntry | undefined>(undefined);
   const [fermentationHours, setFermentationHours] = useState<number>(24);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const rg = new RecipeGenerator();
@@ -49,122 +51,24 @@ function Home() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Dough Requirements Card */}
-          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-            <div className="flex items-center mb-6">
-              <Pizza className="h-6 w-6 text-orange-600 mr-2" />
-              <h2 className="text-2xl font-semibold text-gray-900">Dough Requirements</h2>
-            </div>
-            
-            <div className="space-y-6">
-              <div>
-                <Slider
-                  value={[balls]}
-                  onValueChange={(value) => setBalls(value[0])}
-                  min={1}
-                  max={20}
-                  step={1}
-                  label="Number of dough balls"
-                  unit=" balls"
-                />
-                <p className="text-sm text-gray-500 mt-1">Each ball will be 270 grams</p>
-              </div>
-
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">Yeast Type</label>
-                <Select value={yeastType} onValueChange={(value: Yeast) => setYeastType(value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select yeast type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="ADY">Active Dry Yeast (ADY)</SelectItem>
-                    <SelectItem value="IDY">Instant Dry Yeast (IDY)</SelectItem>
-                    <SelectItem value="CY">Compressed Yeast (CY)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <Slider
-                  value={[hydration]}
-                  onValueChange={(value) => setHydration(value[0])}
-                  min={50}
-                  max={80}
-                  step={0.5}
-                  label="Dough hydration"
-                  unit="%"
-                />
-                <p className="text-sm text-gray-500 mt-1">Water content as percentage of flour weight</p>
-              </div>
-            </div>
-          </div>
+          <DoughRequirementsCard
+            balls={balls}
+            onBallsChange={(value) => setBalls(value[0])}
+            yeastType={yeastType}
+            onYeastTypeChange={setYeastType}
+            hydration={hydration}
+            onHydrationChange={(value) => setHydration(value[0])}
+          />
 
           {/* Fermentation Card */}
-          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-            <div className="flex items-center mb-6">
-              <Clock className="h-6 w-6 text-blue-600 mr-2" />
-              <h2 className="text-2xl font-semibold text-gray-900">Fermentation</h2>
-            </div>
-            
-            <div className="space-y-6">
-              <div>
-                <Slider
-                  value={[temp]}
-                  onValueChange={(value) => setTemp(value[0])}
-                  min={10}
-                  max={30}
-                  step={0.1}
-                  label="Proofing temperature"
-                  unit="°C"
-                />
-                <p className="text-sm text-gray-500 mt-1">Temperature for dough fermentation</p>
-              </div>
-
-              {yeast && (
-                <div>
-                  <Slider
-                    value={[fermentationHours]}
-                    onValueChange={(value) => setFermentationHours(value[0])}
-                    min={Math.min(...yeast.fermentation_hours.map(x => x.hours))}
-                    max={Math.max(...yeast.fermentation_hours.map(x => x.hours))}
-                    step={1}
-                    label="Fermentation time"
-                    unit=" hours"
-                  />
-                  <p className="text-sm text-gray-500 mt-1">Time for dough fermentation</p>
-                  
-                  <div className="mt-4">
-                    <h3 className="text-lg font-medium text-gray-900 mb-3">Available Fermentation Times</h3>
-                    <div className="space-y-2">
-                      {yeast.fermentation_hours
-                        .sort((a, b) => b.hours - a.hours)
-                        .map((x, index) => {
-                          const yeastPercentage = yeastType === 'ADY' ? x.ady * 100 : 
-                                                 yeastType === 'IDY' ? x.idy * 100 : 
-                                                 x.cy * 100;
-                          const isSelected = x.hours === fermentationHours;
-                          return (
-                            <div key={index} className={`flex items-center justify-between p-3 rounded-lg ${
-                              isSelected ? 'bg-orange-100 border border-orange-300' : 'bg-gray-50'
-                            }`}>
-                              <span className={`text-sm font-medium ${
-                                isSelected ? 'text-orange-700' : 'text-gray-700'
-                              }`}>
-                                {x.hours} hours
-                              </span>
-                              <span className={`text-xs ${
-                                isSelected ? 'text-orange-600' : 'text-gray-500'
-                              }`}>
-                                {yeastPercentage.toFixed(2)}% yeast
-                              </span>
-                            </div>
-                          );
-                        })}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+          <FermentationCard
+            temp={temp}
+            onTempChange={(value) => setTemp(value[0])}
+            yeast={yeast}
+            fermentationHours={fermentationHours}
+            onFermentationHoursChange={(value) => setFermentationHours(value[0])}
+            onInfoClick={() => setIsModalOpen(true)}
+          />
         </div>
 
         {/* Recipe Instructions */}
@@ -172,6 +76,18 @@ function Home() {
           <div className="mt-8 bg-white rounded-xl shadow-lg p-6 border border-gray-200">
             <DisplayRecipeInstructions instructions={instructions} />
           </div>
+        )}
+
+        {/* Fermentation Times Modal */}
+        {yeast && (
+          <FermentationTimesModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            yeast={yeast}
+            yeastType={yeastType}
+            fermentationHours={fermentationHours}
+            onFermentationHoursChange={setFermentationHours}
+          />
         )}
       </div>
     </div>
